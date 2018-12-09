@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Demo Element Swap using JS</title>
+	<style>
+	.container {
+		position: relative;
+		width: 1000px;
+		height: 300px;
+		border: 2px solid blue;
+	}
+	.container img {
+		position: absolute;
+		width: 106px;
+		height: 128px;
+		top: 20%;
+		transition: all 2s ease-in-out;
+    	-webkit-transition: all 2s ease-in-out; /** Chrome & Safari **/
+    	-moz-transition: all 2s ease-in-out; /** Firefox **/
+    	-o-transition: all 2s ease-in-out; /** Opera **/
+	}
+	#img1 {
+		left: 10%;
+	}
+	#img2 {
+		left: 80%;
+	}
+	</style>
+	<script type="text/javascript">
+		var img1Elm, img2Elm;
+		var left1, left2;
+		function init() {
+			img1Elm = document.querySelector("#img1");
+			img2Elm = document.querySelector("#img2");
+			left1 = img1Elm.offsetLeft;
+			left2 = img2Elm.offsetLeft;
+		}
+		function swap() {
+			var transitionSpeed = document.querySelector("#speed").value;
+			img1Elm.style.transitionDuration = transitionSpeed + "s";
+			img1Elm.style.WebkitTransitionDuration = transitionSpeed + "s";
+			img2Elm.style.transitionDuration = transitionSpeed + "s";
+			img2Elm.style.WebkitTransitionDuration = transitionSpeed + "s";
+			var img1Left = left1;
+			var img2Left = left2;
+			if (img1Elm.offsetLeft < img2Elm.offsetLeft) {
+				img1Left = left2;
+				img2Left = left1;
+			}
+			img1Elm.style.left = img1Left + "px"; 
+			img2Elm.style.left = img2Left + "px";
+		}
+	</script>
+</head>
+<body onload="init();">
+
+<div>
+	Swap Speed in seconds: <input type="number" value="1"" min="1" max="3" id="speed">
+	<input type="button" value="Click to Swap" onclick="swap();">
+</div>
+<div class="container">
+	<img src="acered.png" id="img1">
+	<img src="acediamond.svg" id="img2">
+	</div>
+</body>
+</html>
