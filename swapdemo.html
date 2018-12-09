@@ -37,10 +37,8 @@
 		}
 		function swap() {
 			var transitionSpeed = document.querySelector("#speed").value;
-			img1Elm.style.transitionDuration = transitionSpeed + "s";
-			img1Elm.style.WebkitTransitionDuration = transitionSpeed + "s";
-			img2Elm.style.transitionDuration = transitionSpeed + "s";
-			img2Elm.style.WebkitTransitionDuration = transitionSpeed + "s";
+			setTransitionSpeed(img1Elm, transitionSpeed);
+			setTransitionSpeed(img2Elm, transitionSpeed);
 			var img1Left = left1;
 			var img2Left = left2;
 			if (img1Elm.offsetLeft < img2Elm.offsetLeft) {
@@ -49,6 +47,11 @@
 			}
 			img1Elm.style.left = img1Left + "px"; 
 			img2Elm.style.left = img2Left + "px";
+		}
+		function setTransitionSpeed(elm, speed) {
+			var transitionSpeed = speed + "s";
+			elm.style.transitionDuration = transitionSpeed;
+			elm.style.WebkitTransitionDuration = transitionSpeed;			
 		}
 	</script>
 </head>
